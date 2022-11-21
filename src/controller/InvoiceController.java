@@ -391,7 +391,20 @@ public class InvoiceController implements ActionListener, ListSelectionListener 
     
    private void printData()
    {
-       
+       ArrayList<InvoiceHeader> invoiceHeaders= invoiceFrame.getInvoiceHeaders();
+       System.out.println("Invoices Data");
+       for(InvoiceHeader invoice: invoiceHeaders)
+       {
+           int invoiceNum= invoice.getInvoiceNum();
+           System.out.println("Invoice"+invoiceNum+"Num");
+           System.out.println("{");
+           System.out.println(dateFormat.format(invoice.getInvoiceDate())+","+invoice.getCustomerName());
+           for(InvoiceLine invoiceLine: invoice.getInvoiceLines())
+           {
+               System.out.println(invoiceLine.getItemName()+","+invoiceLine.getItemPrice()+","+invoiceLine.getCount());
+           }
+           System.out.println("}");
+       }
    }
     
 
